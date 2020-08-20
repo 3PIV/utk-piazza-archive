@@ -1,10 +1,18 @@
 const express = require('express');
-const path = require('path');
+
+const {
+  readData,
+  readTags,
+  readTagged,
+  readContent,
+} = require('../controllers/posts_controller');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
-});
+router
+  .get('/tagged/:tag', readTagged)
+  .get('/post/:id', readContent)
+  .get('/', readData)
+  .get('/tags', readTags);
 
 module.exports = router;
