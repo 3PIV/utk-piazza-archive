@@ -1,15 +1,22 @@
-  
-FROM node:14-slim
+FROM node:lts-alpine
 
-WORKDIR /usr/src/app
+# install simple http server for serving static content
+RUN npm install -g http-server
 
-COPY ./package.json ./
-COPY ./package-lock.json ./
+# make the 'app' folder the current working directory
+WORKDIR /app
 
-RUN yarn install
+# copy both 'package.json' and 'package-lock.json' (if available)
+COPY package*.json ./
 
+# install project dependencies
+RUN npm install
+
+# copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
 
-EXPOSE 49300
+# build app for production with minification
+RUN npm run build
 
-CMD [ "npm", "run", "serve" ]
+EXPOSE 8080
+CMD [ "http-server", "dist" ]
