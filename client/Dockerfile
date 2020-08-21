@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 49300
 
-CMD [ "npm", "serve" ]
+CMD [ "npm", "run", "serve" ]

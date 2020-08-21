@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 49900
 
-CMD [ "npm", "serve" ]
+CMD [ "npm", "run", "serve" ]
