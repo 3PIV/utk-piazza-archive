@@ -26,6 +26,8 @@ class DataFetcher {
   }
 }
 
-var gDataFetcher = new DataFetcher("http://localhost:9000/api");
+
+var gDataFetcher = new DataFetcher("http://accona.eecs.utk.edu:49900/api");
+// var gDataFetcher = new DataFetcher("Vhttp://localhost:9000/api");
 
 export default gDataFetcher;
